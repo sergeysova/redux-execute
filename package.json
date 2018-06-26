@@ -81,6 +81,9 @@
     "webpack": "^4.12.1",
     "webpack-cli": "^3.0.8"
   },
+  "peerDependencies": {
+    "redux": "^4.0.0"
+  },
   "ava": {
     "require": [
       "babel-register"
