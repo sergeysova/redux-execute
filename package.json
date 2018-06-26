@@ -1,6 +1,6 @@
 {
   "name": "redux-execue",
-  "version": "0.1.0",
+  "version": "1.0.0",
   "description": "Another way with thunk in redux",
   "repository": {
     "type": "git",
