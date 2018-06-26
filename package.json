@@ -1,0 +1,78 @@
+{
+  "name": "redux-execue",
+  "version": "0.1.0",
+  "description": "Another way with thunk in redux",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/sergeysova/redux-execue.git"
+  },
+  "main": "lib/index.js",
+  "module": "es/index.js",
+  "files": [
+    "lib",
+    "es",
+    "src",
+    "dist"
+  ],
+  "scripts": {
+    "test": "eslint . && nyc ava",
+    "clean": "rimraf lib dist es",
+    "build": "npm run build:commonjs && npm run build:umd && npm run build:umd:min && npm run build:es",
+    "build:commonjs": "cross-env BABEL_ENV=commonjs babel src --out-dir lib",
+    "build:es": "cross-env BABEL_ENV=es babel src --out-dir es",
+    "build:umd": "cross-env BABEL_ENV=commonjs NODE_ENV=development webpack",
+    "build:umd:min": "cross-env BABEL_ENV=commonjs NODE_ENV=production webpack"
+  },
+  "author": "Sergey Sova <mail@sergeysova.com> (https://sergeysova.com)",
+  "keywords": [
+    "redux",
+    "thunk",
+    "middleware",
+    "redux-middleware",
+    "flux",
+    "action",
+    "command",
+    "effect"
+  ],
+  "bugs": {
+    "url": "https://github.com/sergeysova/redux-execue/issues"
+  },
+  "homepage": "https://github.com/sergeysova/redux-execue#readme",
+  "license": "MIT",
+  "devDependencies": {
+    "@atomix/eslint-config": "^6.2.0",
+    "ava": "^0.25.0",
+    "babel-cli": "^6.26.0",
+    "babel-core": "^6.26.3",
+    "babel-eslint": "^8.2.5",
+    "babel-loader": "^7.1.4",
+    "babel-plugin-check-es2015-constants": "^6.6.5",
+    "babel-plugin-transform-es2015-arrow-functions": "^6.5.2",
+    "babel-plugin-transform-es2015-block-scoped-functions": "^6.6.5",
+    "babel-plugin-transform-es2015-block-scoping": "^6.6.5",
+    "babel-plugin-transform-es2015-classes": "^6.6.5",
+    "babel-plugin-transform-es2015-computed-properties": "^6.6.5",
+    "babel-plugin-transform-es2015-destructuring": "^6.6.5",
+    "babel-plugin-transform-es2015-for-of": "^6.6.0",
+    "babel-plugin-transform-es2015-function-name": "^6.5.0",
+    "babel-plugin-transform-es2015-literals": "^6.5.0",
+    "babel-plugin-transform-es2015-modules-commonjs": "^6.6.5",
+    "babel-plugin-transform-es2015-object-super": "^6.6.5",
+    "babel-plugin-transform-es2015-parameters": "^6.6.5",
+    "babel-plugin-transform-es2015-shorthand-properties": "^6.5.0",
+    "babel-plugin-transform-es2015-spread": "^6.6.5",
+    "babel-plugin-transform-es2015-sticky-regex": "^6.5.0",
+    "babel-plugin-transform-es2015-template-literals": "^6.6.5",
+    "babel-plugin-transform-es2015-unicode-regex": "^6.5.0",
+    "babel-plugin-transform-es3-member-expression-literals": "^6.5.0",
+    "babel-plugin-transform-es3-property-literals": "^6.5.0",
+    "cross-env": "^5.2.0",
+    "eslint": "^4.19.1",
+    "nyc": "^12.0.2",
+    "redux": "^4.0.0",
+    "rimraf": "^2.6.2",
+    "uglifyjs-webpack-plugin": "^1.2.7",
+    "webpack": "^4.12.1",
+    "webpack-cli": "^3.0.8"
+  }
+}
