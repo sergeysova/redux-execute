@@ -1,4 +1,4 @@
-# redux-execue [![Maintainability](https://api.codeclimate.com/v1/badges/1448aef0f57513e42c0c/maintainability)](https://codeclimate.com/github/sergeysova/redux-execue/maintainability) [![Build Status](https://travis-ci.org/sergeysova/redux-execue.svg?branch=master)](https://travis-ci.org/sergeysova/redux-execue) [![Coverage Status](https://coveralls.io/repos/github/sergeysova/redux-execue/badge.svg?branch=master)](https://coveralls.io/github/sergeysova/redux-execue?branch=master)
+# redux-execue [![Maintainability](https://api.codeclimate.com/v1/badges/1448aef0f57513e42c0c/maintainability)](https://codeclimate.com/github/sergeysova/redux-execue/maintainability) [![Build Status](https://travis-ci.com/sergeysova/redux-execue.svg?branch=master)](https://travis-ci.com/sergeysova/redux-execue) [![Coverage Status](https://coveralls.io/repos/github/sergeysova/redux-execue/badge.svg?branch=master)](https://coveralls.io/github/sergeysova/redux-execue?branch=master)
 
 ## Readme
 
@@ -110,12 +110,3 @@ const store = createStore(
   )
 )
 ```
-
-## F.A.Q
-
-### `dispatch(effect, a, b, c)` do not pass arguments to effect
-
-If redux dev tools extension enabled for your project, disable it for now.
-
-- https://github.com/reduxjs/redux/pull/2560
-- https://github.com/zalmoxisus/redux-devtools-extension/pull/524
