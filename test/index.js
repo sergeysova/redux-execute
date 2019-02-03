@@ -1,26 +1,28 @@
-import test from 'ava'
-import { createExecue } from '../src'
+import test from "ava"
+import { createExecute } from "../src"
 
-
-const execueMiddleware = createExecue()
+const execueMiddleware = createExecute()
 
 const doDispatch = () => {}
 const doGetState = () => {}
-const nextHandler = execueMiddleware({ dispatch: doDispatch, getState: doGetState })
+const nextHandler = execueMiddleware({
+  dispatch: doDispatch,
+  getState: doGetState,
+})
 
-test('must return a function to handle next', (t) => {
-  t.is(typeof nextHandler, 'function')
+test("must return a function to handle next", (t) => {
+  t.is(typeof nextHandler, "function")
   t.is(nextHandler.length, 1)
 })
 
-test('must return a function to handle action', (t) => {
+test("must return a function to handle action", (t) => {
   const actionHandler = nextHandler()
 
-  t.is(typeof actionHandler, 'function')
+  t.is(typeof actionHandler, "function")
   t.is(actionHandler.length, 1)
 })
 
-test('must run the given effect with dispatch and getState', (t) => {
+test("must run the given effect with dispatch and getState", (t) => {
   const actionHandler = nextHandler()
 
   const effect = () => (dispatch, getState) => {
@@ -32,7 +34,7 @@ test('must run the given effect with dispatch and getState', (t) => {
   actionHandler(effect)
 })
 
-test('must pass action to next if not a function', (t) => {
+test("must pass action to next if not a function", (t) => {
   const actionObj = {}
 
   const actionHandler = nextHandler((action) => {
@@ -42,8 +44,8 @@ test('must pass action to next if not a function', (t) => {
   actionHandler(actionObj)
 })
 
-test('must return the return value of next if not a function', (t) => {
-  const expected = 'foo'
+test("must return the return value of next if not a function", (t) => {
+  const expected = "foo"
   const actionHandler = nextHandler(() => expected)
 
   const outcome = actionHandler()
@@ -51,8 +53,8 @@ test('must return the return value of next if not a function', (t) => {
   t.is(outcome, expected)
 })
 
-test('must return value as expected if an effect', (t) => {
-  const expected = 'bar'
+test("must return value as expected if an effect", (t) => {
+  const expected = "bar"
   const actionHandler = nextHandler()
 
   const outcome = actionHandler(() => () => expected)
@@ -60,7 +62,7 @@ test('must return value as expected if an effect', (t) => {
   t.is(outcome, expected)
 })
 
-test('must pass all arguments to effect', (t) => {
+test("must pass all arguments to effect", (t) => {
   const expected = [1, 2, 3]
   const actionHandler = nextHandler()
 
@@ -71,7 +73,7 @@ test('must pass all arguments to effect', (t) => {
   actionHandler(effect, ...expected)
 })
 
-test('must be invoked synchronously if an effect', (t) => {
+test("must be invoked synchronously if an effect", (t) => {
   const actionHandler = nextHandler()
   let mutated = 0
 
@@ -79,13 +81,12 @@ test('must be invoked synchronously if an effect', (t) => {
   t.is(mutated, 1)
 })
 
-test('must throw if argument is non-object', (t) => {
+test("must throw if argument is non-object", (t) => {
   t.throws(() => execueMiddleware())
 })
 
-test('must throw if passed function not returns function', (t) => {
+test("must throw if passed function not returns function", (t) => {
   const actionHandler = nextHandler()
 
   t.throws(() => actionHandler(() => {}))
 })
-
